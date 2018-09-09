@@ -1,0 +1,5 @@
+def scalaVersion="2.12"
+
+dependencies{
+    compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
+}
