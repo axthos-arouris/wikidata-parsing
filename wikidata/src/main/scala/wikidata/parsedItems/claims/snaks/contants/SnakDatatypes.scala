@@ -1,9 +1,9 @@
-package wikidata.parsedItems.claims.snaks
+package wikidata.parsedItems.claims.snaks.contants
 
-object SnakTypes {
+object SnakDatatypes {
 
   val ExternalId="external-id"
-  val String="String"
+  val String="string"
   val CommonsMedia="commonsMedia"
   val WikibaseItem="wikibase-item"
   val Quantity="quantity"

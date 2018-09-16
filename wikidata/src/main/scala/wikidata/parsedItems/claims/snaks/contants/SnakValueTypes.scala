@@ -1,4 +1,4 @@
-package wikidata.parsedItems.claims.snaks
+package wikidata.parsedItems.claims.snaks.contants
 
 object SnakValueTypes {
 

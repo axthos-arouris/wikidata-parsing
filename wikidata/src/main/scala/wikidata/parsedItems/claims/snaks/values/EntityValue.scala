@@ -1,16 +1,18 @@
 package wikidata.parsedItems.claims.snaks.values
 
-case class EntityValue(value:String, `type`:String) extends SnakValue
+import wikidata.WikidataId
+
+case class EntityValue(value:WikidataId, `type`:String) extends SnakValue
 
 
 
 object EntityValue{
 
-  def apply(map:Map[String,Any]): StringValue ={
+  def apply(map:Map[String,Any]): EntityValue ={
     val value=map.get("value").map(v=>v.toString)
     val `type`=map.get("type").map(v=>v.toString)
     if(value.isDefined && `type`.isDefined){
-      new StringValue(value.get,`type`.get)
+      new EntityValue(value.get,`type`.get)
     }
     else {
 
