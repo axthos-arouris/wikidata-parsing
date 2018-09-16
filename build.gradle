@@ -1,41 +1,36 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
-    }
-}
+
 plugins {
     id 'java'
     id 'scala'
     id 'com.github.johnrengelman.shadow' version '2.0.4'
     id 'idea'
-
+    id 'maven'
+    id 'signing'
 }
 
-dependencies{
-    compile project(':wikidata')
-}
+
+group = "com.github.axthosarouris"
+archivesBaseName = "com.github.axhtosarouris.wikidata-parser"
+version = "0.1"
+
+
+
+
 
 def scalaVersion= "2.12"
 def scalaLibraryVersion= "2.12.6"
-
-
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
     gradleVersion="4.10"
 }
 
-
-
-allprojects {
-
     apply plugin: 'java'
     apply plugin: 'scala'
     apply plugin: 'com.github.johnrengelman.shadow'
     apply plugin: 'idea'
+    apply plugin: 'maven'
+    apply plugin: 'signing'
 
     repositories {
         mavenCentral()
@@ -66,12 +61,27 @@ allprojects {
     }
 
     test.dependsOn(spec)
+
+
+
+
+signing {
+    sign configurations.archives
 }
 
-shadowJar {
-    zip64 = true
+
+
+dependencies{
+    compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
 }
 
 
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
 
-
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
