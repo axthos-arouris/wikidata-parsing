@@ -1,4 +1,11 @@
+package com.github.axhtosarouris
 
+import java.io._
+import java.nio.file.{Path, Paths}
+import java.util.zip.{GZIPInputStream, GZIPOutputStream}
+
+import scala.io.{BufferedSource, Source}
+import scala.util.{Failure, Success, Try}
 
 trait IOUtils {
 
@@ -53,7 +60,7 @@ trait IOUtils {
 
   def writeToFile(lines:Iterable[String], outputFile:File): Unit ={
     val outStream=new GZIPOutputStream(new FileOutputStream(outputFile))
-    val writer=new BufferedWriter(new OutputStreamWriter(outStream));
+    val writer=new BufferedWriter(new OutputStreamWriter(outStream))
     var counter=1
     for(line<-lines){
       writer.write(line)
@@ -74,6 +81,7 @@ trait IOUtils {
     val resource=this.getClass.getClassLoader.getResourceAsStream(absoluteFilename)
     resource
   }
+
 
 
 

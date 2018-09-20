@@ -1,16 +1,17 @@
-package scala.wikidata.parsedItems
+package com.github.axthosarouris
 
 import java.nio.file.Paths
 
+import com.github.axhtosarouris.wikidata.ItemParser
+import com.github.axhtosarouris.wikidata.constants.Languages
+import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks._
+import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, StringValue}
+import com.github.axhtosarouris.wikidata.parsedItems.{Label, ParsedItem}
+import com.github.axhtosarouris.IOUtils
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import utils.IOUtils
-import com.github.axhtosarouris.wikidata.ItemParser
-import com.github.axhtosarouris.wikidata.constants.Languages
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, GenericValue, SnakValue, StringValue}
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks._
-import com.github.axhtosarouris.wikidata.parsedItems.{Label, ParsedItem}
+
 
 @RunWith(classOf[JUnitRunner])
 class ItemParserTest extends FlatSpec with IOUtils {

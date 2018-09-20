@@ -2,6 +2,7 @@ package com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values
 
 import com.github.axhtosarouris.wikidata.WikidataId
 
+
 case class EntityValue(value:WikidataId, `type`:String) extends SnakValue
 
 
