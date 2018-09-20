@@ -4,8 +4,8 @@ plugins {
     id 'scala'
     id 'com.github.johnrengelman.shadow' version '2.0.4'
     id 'idea'
-    id 'maven'
-    id 'signing'
+//    id 'maven'
+//    id 'signing'
 }
 
 
@@ -42,10 +42,8 @@ wrapper {
         compile group: 'org.scala-lang', name: 'scala-library', version: "$scalaLibraryVersion"
         testCompile group: 'org.scalatest', name: "scalatest_$scalaVersion", version: '3.0.5'
 
-        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-
         //should be the same as the one used in spark
-        compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.16'
+         compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.16'
 
         compile group: 'com.typesafe', name: 'config', version: '1.3.1'
         testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -65,9 +63,9 @@ wrapper {
 
 
 
-signing {
-    sign configurations.archives
-}
+//signing {
+//    sign configurations.archives
+//}
 
 
 
@@ -75,13 +73,13 @@ dependencies{
     compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
 }
 
-
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
+//
+//task javadocJar(type: Jar) {
+//    classifier = 'javadoc'
+//    from javadoc
+//}
+//
+//task sourcesJar(type: Jar) {
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//}
