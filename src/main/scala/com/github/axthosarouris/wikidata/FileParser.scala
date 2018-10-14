@@ -4,14 +4,12 @@ import java.io.File
 import java.nio.charset.StandardCharsets
 
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
+import org.json4s._
+import org.json4s.jackson.Serialization.write
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.io.{BufferedSource, Source}
 import scala.util.{Failure, Success, Try}
-
-import org.json4s._
-import org.json4s.jackson.Serialization
-import org.json4s.jackson.Serialization.{read, write}
 
 class FileParser(f: File) {
   val logger: Logger = LoggerFactory.getLogger("FileParser")

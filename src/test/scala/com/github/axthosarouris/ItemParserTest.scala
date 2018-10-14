@@ -16,7 +16,7 @@ class ItemParserTest extends FlatSpec with IOUtils {
 
 
   val parser = new ItemParser()
-  val json: String = resourceFileAsSeq(Paths.get("hydrogen.txt")).toList.head
+  val json: String = resourceFileAsSeq(Paths.get("hydrogen.json")).toList.head
 
   "ParsedItem" should "have an id" in {
 
