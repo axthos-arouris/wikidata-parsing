@@ -10,7 +10,7 @@ plugins {
 
 
 group = "com.github.axthosarouris"
-archivesBaseName = "com.github.axhtosarouris.wikidata-parser"
+archivesBaseName = "com.github.axthosarouris.wikidata-parser"
 version = "0.1"
 
 

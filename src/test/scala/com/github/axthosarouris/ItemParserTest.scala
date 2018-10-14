@@ -2,12 +2,12 @@ package com.github.axthosarouris
 
 import java.nio.file.Paths
 
-import com.github.axhtosarouris.IOUtils
-import com.github.axhtosarouris.wikidata.ItemParser
-import com.github.axhtosarouris.wikidata.constants.Languages
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks._
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, ExternalIdValue, StringValue}
-import com.github.axhtosarouris.wikidata.parsedItems.{Label, ParsedItem}
+import com.github.axthosarouris.IOUtils
+import com.github.axthosarouris.wikidata.ItemParser
+import com.github.axthosarouris.wikidata.constants.Languages
+import com.github.axthosarouris.wikidata.parsedItems.claims.snaks._
+import com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, ExternalIdValue, StringValue}
+import com.github.axthosarouris.wikidata.parsedItems.{Label, ParsedItem}
 import org.scalatest.FlatSpec
 
 
