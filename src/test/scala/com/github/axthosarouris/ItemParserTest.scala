@@ -2,18 +2,16 @@ package com.github.axthosarouris
 
 import java.nio.file.Paths
 
+import com.github.axhtosarouris.IOUtils
 import com.github.axhtosarouris.wikidata.ItemParser
 import com.github.axhtosarouris.wikidata.constants.Languages
 import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks._
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, StringValue}
+import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, ExternalIdValue, StringValue}
 import com.github.axhtosarouris.wikidata.parsedItems.{Label, ParsedItem}
-import com.github.axhtosarouris.IOUtils
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 
 
-@RunWith(classOf[JUnitRunner])
+//@RunWith(classOf[JUnitRunner])
 class ItemParserTest extends FlatSpec with IOUtils {
 
 
@@ -39,7 +37,7 @@ class ItemParserTest extends FlatSpec with IOUtils {
   }
 
 
-  "ParsedItem" should "have not have empty snak " in {
+  it should "not have have empty snak " in {
     val item = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.map(claim => claim.mainsnak).toList
 
@@ -58,7 +56,7 @@ class ItemParserTest extends FlatSpec with IOUtils {
   }
 
 
-  "ParsedItem" should "have at least one EntityValue snak" in {
+  it should "have at least one EntityValue snak" in {
     val item: ParsedItem = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
     val entityValues: List[EntityValue] =snaks.collect{
@@ -72,7 +70,7 @@ class ItemParserTest extends FlatSpec with IOUtils {
   }
 
 
-  "ParsedItem" should "have at least one StringValue snak" in {
+  it should "have at least one StringValue snak" in {
     val item: ParsedItem = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
     val entityValues: List[StringValue] =snaks.collect{
@@ -80,8 +78,31 @@ class ItemParserTest extends FlatSpec with IOUtils {
     }
     assert(entityValues.nonEmpty)
 
+  }
 
 
+
+  it should "have at least one ExtenrnalIdValue snak" in {
+    val item: ParsedItem = parser.parseString(json)
+    val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
+    val entityValues: List[ExternalIdValue] =snaks.collect{
+      case snak:ExternalIdSnak=> snak.datavalue
+    }
+    assert(entityValues.nonEmpty)
+
+  }
+
+
+  it should "contain GenericSnaks only for time,quantities and commonsmedia" in{
+    val item= parser.parseString(json)
+    val snaks=item.claims.values.flatten.toList.map(claim=>claim.mainsnak)
+    val genericSnaks=snaks
+      .filter(snak=> snak.isInstanceOf[GenericValueSnak])
+      .filter(snak=> !snak.datatype.equals("quantity"))
+        .filter(snak=> !snak.datatype.equals("time"))
+      .filter(snak=> !snak.datatype.equals("commonsMedia"))
+
+    assert(genericSnaks.isEmpty)
   }
 
 }

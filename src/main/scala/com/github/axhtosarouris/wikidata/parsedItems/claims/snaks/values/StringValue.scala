@@ -14,7 +14,7 @@ object StringValue{
     }
     else {
 
-      throw new IllegalArgumentException(s"${map.toString()} is not a DataValue" )
+      throw new IllegalArgumentException(s"${map.toString()} is not a StringValue" )
     }
   }
 

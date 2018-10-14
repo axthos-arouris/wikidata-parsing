@@ -2,7 +2,7 @@ package com.github.axhtosarouris.wikidata.parsedItems.claims.snaks
 
 import com.github.axhtosarouris.wikidata.WikidataId
 import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.contants.SnakDatatypes
-import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, GenericValue, SnakValue, StringValue}
+import com.github.axhtosarouris.wikidata.parsedItems.claims.snaks.values._
 
 trait MainSnak{
 
@@ -11,7 +11,6 @@ trait MainSnak{
   def property:WikidataId
   def datavalue:SnakValue
   def datatype:String
-
 
 }
 
@@ -25,8 +24,8 @@ object MainSnak{
       case Some(e:EntityValue)=>EntityValueSnak(snaktype,property,e,datatype)
       case Some(s:StringValue)=>StringValueSnak(snaktype,property,s,datatype)
       case Some(g:GenericValue)=>GenericValueSnak(snaktype,property,g,datatype)
+      case Some(eid:ExternalIdValue)=> ExternalIdSnak(snaktype,property,eid,datatype)
       case None=> EmptyValueSnak(snaktype,property,datatype)
-
     }
 
   }
@@ -35,6 +34,7 @@ object MainSnak{
   def selectSnakValue(datatype:String,datavalue:Map[String,Any]): SnakValue =datatype match{
     case SnakDatatypes.WikibaseItem=> EntityValue(datavalue)
     case SnakDatatypes.String=>StringValue(datavalue)
+    case SnakDatatypes.ExternalId=> ExternalIdValue(datavalue)
     case _=>GenericValue(datavalue)
   }
 
