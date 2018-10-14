@@ -1,4 +1,4 @@
-# Wikidata parser
+# Scala Wikidata parser
 
 A simple scala parser for the wikidata dataset.
 
