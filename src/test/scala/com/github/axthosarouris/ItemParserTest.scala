@@ -2,7 +2,6 @@ package com.github.axthosarouris
 
 import java.nio.file.Paths
 
-import com.github.axthosarouris.IOUtils
 import com.github.axthosarouris.wikidata.ItemParser
 import com.github.axthosarouris.wikidata.constants.Languages
 import com.github.axthosarouris.wikidata.parsedItems.claims.snaks._

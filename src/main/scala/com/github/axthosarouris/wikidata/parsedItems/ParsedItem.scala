@@ -8,5 +8,4 @@ case class ParsedItem(id: WikidataId,
                       descriptions: Map[String, Description],
                       aliases: Map[String, List[Alias]],
                       claims: Map[String, List[Claim]]
-
                      )
