@@ -88,7 +88,7 @@ bintray {
 
     pkg {
         repo = 'scala-wikidata-parser'
-        name = 'scala-wikidata-parser'
+        name = "scala-wikidata-parser_$scalaVersion"
         licenses = ['MIT']
         vcsUrl = 'https://github.com/axthosarouris/wikidata-parsing'
 
