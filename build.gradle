@@ -19,78 +19,17 @@ apply plugin: 'maven'
 apply plugin: 'com.jfrog.bintray'
 
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['MyPublication']
 
-    pkg {
-        repo = 'scala-wikidata-parser'
-        name = 'scala-wikidata-parser'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/axthosarouris/wikidata-parsing'
-
-        version {
-            name = '0.2'
-            desc = 'Alpha testing'
-            released  = new Date()
-            vcsTag = '0.2'
-//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-        }
-    }
-
-
-}
-
-
-
-def pomConfig = {
-    licenses {
-        license {
-            name "MIT license"
-            url "https://opensource.org/licenses/MIT"
-            distribution "repo"
-        }
-    }
-    developers {
-        developer {
-            id "axthosarouris"
-            name "Orestis Gkorgkas"
-            email "orestis.gorgas@gmail.com"
-        }
-    }
-
-    scm {
-        url "https://github.com/axthosarouris/wikidata-parsing"
-    }
-}
-
-
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            groupId 'com.github.axthosarouris'
-            artifactId 'wikidata-parsing'
-            version '0.2'
-        }
-    }
-}
+def scalaVersion = "2.11"
+def scalaLibraryVersion = "2.11.12"
+def codeVersion="0.1"
 
 
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
-version = "0.1"
+version = "${codeVersion}"
 
-
-
-
-
-def scalaVersion = "2.12"
-def scalaLibraryVersion = "2.12.6"
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
@@ -98,11 +37,9 @@ wrapper {
 }
 
 
-
 repositories {
     jcenter()
 }
-
 
 
 dependencies {
@@ -146,3 +83,66 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
+
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication']
+
+    pkg {
+        repo = 'scala-wikidata-parser'
+        name = "scala-wikidata-parser_$scalaVersion"
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/axthosarouris/wikidata-parsing'
+
+        version {
+            name = '0.1'
+            desc = 'Alpha testing'
+            released  = new Date()
+            vcsTag =  "${codeVersion}"
+//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+
+
+}
+
+
+
+def pomConfig = {
+    licenses {
+        license {
+            name "MIT license"
+            url "https://opensource.org/licenses/MIT"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "axthosarouris"
+            name "Orestis Gkorgkas"
+            email "orestis.gorgas@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/axthosarouris/wikidata-parsing"
+    }
+}
+
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'com.github.axthosarouris'
+            artifactId "wikidata-parsing_$scalaVersion"
+            version "${codeVersion}"
+        }
+    }
+}
+
+

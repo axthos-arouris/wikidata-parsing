@@ -22,20 +22,18 @@ class FileParser(val inputFile: File) {
 
   def writeToFile(itemStream:Stream[ParsedItem],outputFile:File): Unit ={
     val writer=initFileWriter(outputFile)
-    var counter=0
-    for{item<- itemStream}{
-      writer.write(itemParser.serialize(item))
-      writer.newLine()
-      counter=(counter+1)%10
-      if(counter==0){
-        writer.flush()
-      }
-    }
+    itemStream.foreach(item=>writeLine(writer,item))
     writer.flush()
     writer.close()
 
   }
 
+
+  private def writeLine(writer: BufferedWriter, item: ParsedItem) = {
+    writer.write(itemParser.serialize(item))
+    writer.newLine()
+    writer.flush()
+  }
 
   private def initFileWriter(outputFile:File): BufferedWriter ={
     val writer=new BufferedWriter(
