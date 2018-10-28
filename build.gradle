@@ -93,7 +93,7 @@ bintray {
         vcsUrl = 'https://github.com/axthosarouris/wikidata-parsing'
 
         version {
-            name = 'scala-wikidata-parser_$scalaVersion'
+            name = "scala-wikidata-parser_$scalaVersion"
             desc = 'Alpha testing'
             released = new Date()
             vcsTag = "$codeVersion"
