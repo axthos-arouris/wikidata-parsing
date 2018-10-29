@@ -2,6 +2,7 @@ package com.github.axthosarouris
 
 import java.nio.file.Paths
 
+import com.github.axthosarouris.scala.commons.ResourceReader
 import com.github.axthosarouris.wikidata.ItemParser
 import com.github.axthosarouris.wikidata.constants.Languages
 import com.github.axthosarouris.wikidata.parsedItems.claims.snaks._
@@ -11,11 +12,11 @@ import org.scalatest.FlatSpec
 
 
 //@RunWith(classOf[JUnitRunner])
-class ItemParserTest extends FlatSpec with IOUtils {
+class ItemParserTest extends FlatSpec with ResourceReader {
 
 
   val parser = new ItemParser()
-  val json: String = resourceFileAsSeq(Paths.get("hydrogen.json")).toList.head
+  val json: String = resourceAsSeq(Paths.get("hydrogen.json")).toList.head
 
   "ParsedItem" should "have an id" in {
 
@@ -36,7 +37,7 @@ class ItemParserTest extends FlatSpec with IOUtils {
   }
 
 
-  it should "not have have empty snak " in {
+  it should "not have have empty snak" in {
     val item = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.map(claim => claim.mainsnak).toList
 
