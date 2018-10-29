@@ -38,6 +38,7 @@ wrapper {
 
 repositories {
     jcenter()
+    maven { url "https://dl.bintray.com/axthosarouris/scala-commons" }
 }
 
 
@@ -49,6 +50,7 @@ dependencies {
     //should be the same as the one used in spark
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.16'
 
+      compile "com.github.axthosarouris:scala-commons_2.12:0.1"
 
     compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
 
