@@ -20,8 +20,8 @@ apply plugin: 'com.jfrog.bintray'
 
 
 def date = new Date()
-def scalaVersion = "2.12"
-def scalaLibraryVersion = "2.12.7"
+def scalaVersion = "2.11"
+def scalaLibraryVersion = "2.11.12"
 def codeVersion = date.format("yyyy.MM.dd")
 
 
