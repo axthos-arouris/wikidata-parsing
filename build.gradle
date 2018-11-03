@@ -19,10 +19,10 @@ apply plugin: 'maven'
 apply plugin: 'com.jfrog.bintray'
 
 
-def date=new Date()
+def date = new Date()
 def scalaVersion = "2.12"
 def scalaLibraryVersion = "2.12.7"
-def codeVersion = date.format("yyyyMMdd")
+def codeVersion = date.format("yyyy.MM.dd")
 
 
 
@@ -51,7 +51,7 @@ dependencies {
     //should be the same as the one used in spark
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.16'
 
-      compile "com.github.axthosarouris:scala-commons_${scalaVersion}:0.1"
+    compile "com.github.axthosarouris:scala-commons_2.12:+"
 
     compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
 
@@ -103,8 +103,6 @@ bintray {
 //            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
-
-   
 
 
 }
