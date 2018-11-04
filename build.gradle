@@ -39,7 +39,7 @@ wrapper {
 
 repositories {
     jcenter()
-    maven { url "https://dl.bintray.com/axthosarouris/scala-commons" }
+    maven { url "https://dl.bintray.com/axthosarouris/scala-libraries" }
 }
 
 
@@ -90,7 +90,7 @@ bintray {
         repo = 'scala-wikidata-parser'
         name = "scala-wikidata-parser_$scalaVersion"
         licenses = ['MIT']
-        vcsUrl = 'https://github.com/axthosarouris/wikidata-parsing'
+        vcsUrl = 'https://github.com/axthosarouris/wikidata-libraries'
 
         version {
             name = "$codeVersion"
