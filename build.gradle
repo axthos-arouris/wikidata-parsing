@@ -87,7 +87,7 @@ bintray {
     publications = ['MyPublication']
 
     pkg {
-        repo = 'scala-wikidata-parser'
+        repo = 'scala-libraries'
         name = "scala-wikidata-parser_$scalaVersion"
         licenses = ['MIT']
         vcsUrl = 'https://github.com/axthosarouris/wikidata-libraries'
