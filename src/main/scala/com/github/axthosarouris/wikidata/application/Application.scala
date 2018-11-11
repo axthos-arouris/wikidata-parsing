@@ -3,7 +3,7 @@ package com.github.axthosarouris.wikidata.application
 import java.io.File
 
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
-import com.github.axthosarouris.wikidata.utils.{FileParser, StreamParser}
+import com.github.axthosarouris.wikidata.utils.FileParser
 
 object Application {
 
