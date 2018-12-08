@@ -93,7 +93,6 @@ bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     publications = ['MyPublication']
-
     pkg {
         repo = 'scala-libraries'
         name = "scala-wikidata-parser_$scalaVersion"
@@ -114,26 +113,6 @@ bintray {
 
 
 
-def pomConfig = {
-    licenses {
-        license {
-            name "MIT license"
-            url "https://opensource.org/licenses/MIT"
-            distribution "repo"
-        }
-    }
-    developers {
-        developer {
-            id "axthosarouris"
-            name "Orestis Gkorgkas"
-            email "orestis.gorgas@gmail.com"
-        }
-    }
-
-    scm {
-        url "https://github.com/axthosarouris/wikidata-parsing"
-    }
-}
 
 
 publishing {
