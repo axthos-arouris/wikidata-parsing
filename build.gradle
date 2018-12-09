@@ -22,13 +22,12 @@ apply plugin: 'com.jfrog.bintray'
 def date = new Date()
 def scalaVersion = "2.11"
 def scalaLibraryVersion = "2.11.12"
-def codeVersion = date.format("yyyy.MM.dd")
+def dateString = date.format("yyyy.MM.dd")
 
 
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
-version = "$codeVersion"
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
@@ -93,40 +92,16 @@ bintray {
         vcsUrl = 'https://github.com/axthosarouris/wikidata-libraries'
 
         version {
-            name = "$codeVersion"
+            name = "$dateString"
             desc = 'Alpha testing'
             released = new Date()
-            vcsTag = "$codeVersion"
+            vcsTag = "$dateString"
 //            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
 
 
 }
-
-
-
-def pomConfig = {
-    licenses {
-        license {
-            name "MIT license"
-            url "https://opensource.org/licenses/MIT"
-            distribution "repo"
-        }
-    }
-    developers {
-        developer {
-            id "axthosarouris"
-            name "Orestis Gkorgkas"
-            email "orestis.gorgas@gmail.com"
-        }
-    }
-
-    scm {
-        url "https://github.com/axthosarouris/wikidata-parsing"
-    }
-}
-
 
 publishing {
     publications {
@@ -136,7 +111,7 @@ publishing {
             artifact javadocJar
             groupId 'com.github.axthosarouris'
             artifactId "wikidata-parsing_$scalaVersion"
-            version "${codeVersion}"
+            version "${dateString}"
         }
     }
 }
