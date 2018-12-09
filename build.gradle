@@ -48,7 +48,7 @@ dependencies {
     compile group: 'org.scala-lang', name: 'scala-library', version: "$scalaLibraryVersion"
     testCompile group: 'org.scalatest', name: "scalatest_$scalaVersion", version: '3.0.5'
 
-    compile "com.github.axthosarouris:scala-commons_${scalaVersion}:+"
+    compile "com.github.axthosarouris:scala-commons_${scalaVersion}:2018.12.09"
 
     compile "org.json4s:json4s-jackson_$scalaVersion:3.5.1"
 
