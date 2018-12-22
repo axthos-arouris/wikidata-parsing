@@ -22,15 +22,15 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.github.hierynomus.scalariform"
 
 def date = new Date()
-def scalaVersion = "2.12"
-def scalaLibraryVersion = "2.12.7"
-def codeVersion = date.format("yyyy.MM.dd")
+def scalaVersion = "2.11"
+def scalaLibraryVersion = "2.11.12"
+def dateString = date.format("yyyy.MM.dd")
 
 
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
-version = "$codeVersion"
+version = "$dateString"
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
