@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'scala'
@@ -5,6 +6,8 @@ plugins {
     id "com.jfrog.bintray" version "1.8.4"
     id 'maven-publish'
     id 'maven'
+    id "com.github.hierynomus.scalariform" version "0.2.0"
+
 //    id 'signing'
 }
 
@@ -17,7 +20,7 @@ apply plugin: 'maven-publish'
 //apply plugin: 'signing'
 apply plugin: 'maven'
 apply plugin: 'com.jfrog.bintray'
-
+apply plugin: "com.github.hierynomus.scalariform"
 
 def date = new Date()
 def scalaVersion = "2.11"
@@ -77,6 +80,19 @@ task javadocJar(type: Jar) {
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+
+scalariform {
+    alignParameters = true
+    alignSingleLineCaseStatements = true
+    compactStringConcatenation = false
+    doubleIndentClassDeclaration = true
+    indentLocalDefs = true
+    indentSpaces = 2
+    preserveDanglingCloseParenthesis = true
+    preserveSpaceBeforeArguments =  true
+    spaceInsideBrackets = false
 }
 
 
