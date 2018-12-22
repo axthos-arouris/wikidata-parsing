@@ -7,7 +7,6 @@ import org.json4s.jackson.Serialization.write
 
 class ItemParser() {
 
-
   implicit val formats = DefaultFormats
 
   def parseString(json: String): ParsedItem = {

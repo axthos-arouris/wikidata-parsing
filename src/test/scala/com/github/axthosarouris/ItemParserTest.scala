@@ -10,10 +10,8 @@ import com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values.{Entity
 import com.github.axthosarouris.wikidata.parsedItems.{Label, ParsedItem}
 import org.scalatest.FlatSpec
 
-
 //@RunWith(classOf[JUnitRunner])
 class ItemParserTest extends FlatSpec with ResourceReader {
-
 
   val parser = new ItemParser()
   val json: String = resourceAsSeq(Paths.get("hydrogen.json")).toList.head
@@ -23,7 +21,6 @@ class ItemParserTest extends FlatSpec with ResourceReader {
     val item = parser.parseString(json)
     assert(item.id === "Q556")
   }
-
 
   "ParsedItem" should "have  labels" in {
 
@@ -36,7 +33,6 @@ class ItemParserTest extends FlatSpec with ResourceReader {
 
   }
 
-
   it should "not have have empty snak" in {
     val item = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.map(claim => claim.mainsnak).toList
@@ -48,59 +44,52 @@ class ItemParserTest extends FlatSpec with ResourceReader {
     }
 
     val dataValues: List[MainSnak] = snaks.filter {
-      case snak:EmptyValueSnak=>true
-      case _=>false
+      case snak: EmptyValueSnak => true
+      case _ => false
     }
 
     assert(dataValues.isEmpty)
   }
 
-
   it should "have at least one EntityValue snak" in {
     val item: ParsedItem = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
-    val entityValues: List[EntityValue] =snaks.collect{
-      case snak:EntityValueSnak=> snak.datavalue
+    val entityValues: List[EntityValue] = snaks.collect {
+      case snak: EntityValueSnak => snak.datavalue
     }
 
     assert(entityValues.nonEmpty)
 
-
-
   }
-
 
   it should "have at least one StringValue snak" in {
     val item: ParsedItem = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
-    val entityValues: List[StringValue] =snaks.collect{
-      case snak:StringValueSnak=> snak.datavalue
+    val entityValues: List[StringValue] = snaks.collect {
+      case snak: StringValueSnak => snak.datavalue
     }
     assert(entityValues.nonEmpty)
 
   }
-
-
 
   it should "have at least one ExtenrnalIdValue snak" in {
     val item: ParsedItem = parser.parseString(json)
     val snaks: List[MainSnak] = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
-    val entityValues: List[ExternalIdValue] =snaks.collect{
-      case snak:ExternalIdSnak=> snak.datavalue
+    val entityValues: List[ExternalIdValue] = snaks.collect {
+      case snak: ExternalIdSnak => snak.datavalue
     }
     assert(entityValues.nonEmpty)
 
   }
 
-
-  it should "contain GenericSnaks only for time,quantities and commonsmedia" in{
-    val item= parser.parseString(json)
-    val snaks=item.claims.values.flatten.toList.map(claim=>claim.mainsnak)
-    val genericSnaks=snaks
-      .filter(snak=> snak.isInstanceOf[GenericValueSnak])
-      .filter(snak=> !snak.datatype.equals("quantity"))
-        .filter(snak=> !snak.datatype.equals("time"))
-      .filter(snak=> !snak.datatype.equals("commonsMedia"))
+  it should "contain GenericSnaks only for time,quantities and commonsmedia" in {
+    val item = parser.parseString(json)
+    val snaks = item.claims.values.flatten.toList.map(claim => claim.mainsnak)
+    val genericSnaks = snaks
+      .filter(snak => snak.isInstanceOf[GenericValueSnak])
+      .filter(snak => !snak.datatype.equals("quantity"))
+      .filter(snak => !snak.datatype.equals("time"))
+      .filter(snak => !snak.datatype.equals("commonsMedia"))
 
     assert(genericSnaks.isEmpty)
   }

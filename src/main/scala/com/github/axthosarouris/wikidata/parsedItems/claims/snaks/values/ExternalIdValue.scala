@@ -2,7 +2,6 @@ package com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values
 
 case class ExternalIdValue(`type`: String, value: String) extends SnakValue
 
-
 object ExternalIdValue {
 
   def apply(map: Map[String, Any]): ExternalIdValue = {
@@ -10,11 +9,9 @@ object ExternalIdValue {
     val `type` = map.get("type").map(v => v.toString)
     if (value.isDefined && `type`.isDefined) {
       new ExternalIdValue(value.get, `type`.get)
-    }
-    else {
+    } else {
       throw new IllegalArgumentException(s"${map.toString()} is not a ExternalIdValue")
     }
   }
-
 
 }

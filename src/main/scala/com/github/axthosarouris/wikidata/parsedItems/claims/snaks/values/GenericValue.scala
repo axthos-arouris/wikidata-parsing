@@ -1,7 +1,6 @@
 package com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values
 
-case  class GenericValue(`type`: String, value: Map[String,Any]) extends SnakValue
-
+case class GenericValue(`type`: String, value: Map[String, Any]) extends SnakValue
 
 object GenericValue {
 

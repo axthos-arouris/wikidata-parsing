@@ -8,10 +8,10 @@ import org.slf4j.{Logger, LoggerFactory}
 
 import scala.util.{Failure, Success, Try}
 
-class StreamParser(val inputStream:Stream[String]) {
+class StreamParser(val inputStream: Stream[String]) {
 
   @transient
-  val  logger: Logger = LoggerFactory.getLogger("StreamParser")
+  val logger: Logger = LoggerFactory.getLogger("StreamParser")
 
   @transient
   val itemParser = new ItemParser()
@@ -19,8 +19,7 @@ class StreamParser(val inputStream:Stream[String]) {
   @transient
   implicit val formats = DefaultFormats
 
-  def parseStream(): Stream[ParsedItem] = inputStream.flatMap(line=>parseLine(line))
-
+  def parseStream(): Stream[ParsedItem] = inputStream.flatMap(line => parseLine(line))
 
   def parseLine(line: String): Option[ParsedItem] = {
     Try(itemParser.parseString(line)) match {
@@ -29,8 +28,5 @@ class StreamParser(val inputStream:Stream[String]) {
     }
   }
 
-
-
 }
-
 

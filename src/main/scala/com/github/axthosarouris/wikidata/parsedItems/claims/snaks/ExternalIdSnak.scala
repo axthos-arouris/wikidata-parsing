@@ -6,6 +6,3 @@ import com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values.Externa
 case class ExternalIdSnak(snaktype: String, property: WikidataId,
                           datavalue: ExternalIdValue, datatype: String) extends MainSnak
 
-
-
-
