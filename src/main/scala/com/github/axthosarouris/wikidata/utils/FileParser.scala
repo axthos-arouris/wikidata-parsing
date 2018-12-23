@@ -1,6 +1,6 @@
 package com.github.axthosarouris.wikidata.utils
 
-import java.io._
+import java.io.{BufferedWriter, File, FileInputStream, FileOutputStream, OutputStreamWriter}
 import java.util.zip.{GZIPInputStream, GZIPOutputStream}
 
 import com.github.axthosarouris.wikidata.ItemParser
@@ -26,7 +26,7 @@ class FileParser(val inputFile: File) {
 
   }
 
-  private def writeLine(writer: BufferedWriter, item: ParsedItem) = {
+  private def writeLine(writer: BufferedWriter, item: ParsedItem): Unit = {
     writer.write(itemParser.serialize(item))
     writer.newLine()
     writer.flush()

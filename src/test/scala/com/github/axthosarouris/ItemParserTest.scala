@@ -39,12 +39,11 @@ class ItemParserTest extends FlatSpec with ResourceReader {
 
     snaks.foreach {
       case _: EmptyValueSnak => fail("No empty snaks allowed")
-      case snak: MainSnak => assert(snak.datavalue.value !== null)
-
+      case snak: MainSnak => assert(snak.datavalue.value.isInstanceOf[Any])
     }
 
     val dataValues: List[MainSnak] = snaks.filter {
-      case snak: EmptyValueSnak => true
+      case _: EmptyValueSnak => true
       case _ => false
     }
 

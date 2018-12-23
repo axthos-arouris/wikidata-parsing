@@ -1,3 +1,22 @@
+buildscript {
+    repositories {
+        jcenter() // only work after gradle 1.7
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "https://dl.bintray.com/ngbinh/maven/"
+        }
+    }
+
+    dependencies {
+        // scalastyle-plugin for version 2.12 is the only one working 
+        classpath "org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.12:1.0.0"
+        classpath "gradle.plugin.com.hierynomus.gradle.plugins:scalariform-gradle-plugin:0.2.0"
+    }
+}
+
+
 plugins {
     id 'java'
     id 'scala'
@@ -5,9 +24,6 @@ plugins {
     id "com.jfrog.bintray" version "1.8.4"
     id 'maven-publish'
     id 'maven'
-    id "com.github.hierynomus.scalariform" version "0.2.0"
-
-//    id 'signing'
 }
 
 
@@ -16,10 +32,11 @@ apply plugin: 'scala'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'idea'
 apply plugin: 'maven-publish'
-//apply plugin: 'signing'
+
 apply plugin: 'maven'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.github.hierynomus.scalariform"
+apply plugin: 'scalaStyle'
 
 def date = new Date()
 def scalaVersion = "2.11"
@@ -70,8 +87,6 @@ task spec(dependsOn: ['testClasses'], type: JavaExec) {
 test.dependsOn(spec)
 
 
-
-
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -95,6 +110,13 @@ scalariform {
     spaceInsideBrackets = false
 }
 
+
+scalaStyle {
+    configLocation = "codestyle/scalastyle_config.xml"
+    includeTestSourceDirectory = true
+    source = "src/main/scala"
+    testSource = "src/test/scala"
+}
 
 bintray {
     user = System.getenv('BINTRAY_USER')

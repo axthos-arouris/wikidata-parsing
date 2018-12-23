@@ -4,7 +4,7 @@ case class GenericValue(`type`: String, value: Map[String, Any]) extends SnakVal
 
 object GenericValue {
 
-  def apply(map: Map[String, Any]) = {
+  def apply(map: Map[String, Any]): GenericValue = {
     val ttype = map.get("type").map(_.toString).getOrElse("unknown")
     new GenericValue(ttype, map)
 

@@ -6,8 +6,4 @@ trait SnakValue {
   def `type`: String
 }
 
-case object EmptySnakValue extends SnakValue {
-  def value: Null = null
 
-  def `type`: Null = null
-}
