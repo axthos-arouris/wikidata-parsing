@@ -1,13 +1,13 @@
 package com.github.axthosarouris.wikidata
 
-import org.json4s._
-import org.json4s.jackson.JsonMethods._
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
+import org.json4s.DefaultFormats
+import org.json4s.jackson.JsonMethods.parse
 import org.json4s.jackson.Serialization.write
 
 class ItemParser() {
 
-  implicit val formats = DefaultFormats
+  implicit val formats: DefaultFormats.type = DefaultFormats
 
   def parseString(json: String): ParsedItem = {
     val parsedItem = parse(json)

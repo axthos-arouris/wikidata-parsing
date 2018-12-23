@@ -2,8 +2,7 @@ package com.github.axthosarouris.wikidata.utils
 
 import com.github.axthosarouris.wikidata.ItemParser
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
-import org.json4s._
-import org.json4s.jackson.Serialization.write
+import org.json4s.DefaultFormats
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.util.{Failure, Success, Try}
@@ -17,7 +16,7 @@ class StreamParser(val inputStream: Stream[String]) {
   val itemParser = new ItemParser()
 
   @transient
-  implicit val formats = DefaultFormats
+  implicit val formats: DefaultFormats.type = DefaultFormats
 
   def parseStream(): Stream[ParsedItem] = inputStream.flatMap(line => parseLine(line))
 
