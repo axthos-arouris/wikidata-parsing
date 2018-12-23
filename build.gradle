@@ -41,7 +41,7 @@ apply plugin: 'scalaStyle'
 def date = new Date()
 def scalaVersion = "2.11"
 def scalaLibraryVersion = "2.11.12"
-def dateString = date.format("yyyy.MM.dd")
+def dateString = date.format("yyyy.MM.dd.HH.mm")
 
 
 
