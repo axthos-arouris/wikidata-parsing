@@ -13,7 +13,7 @@ import org.scalatest.FlatSpec
 //@RunWith(classOf[JUnitRunner])
 class ItemParserTest extends FlatSpec with ResourceReader {
 
-  val parser = new ItemParser()
+  val parser: ItemParser[ParsedItem] = new ItemParser[ParsedItem]()
   val json: String = resourceAsSeq(Paths.get("hydrogen.json")).toList.head
 
   "ParsedItem" should "have an id" in {

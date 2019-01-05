@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
 
 class ItemTest extends FlatSpec with ResourceReader {
 
-  private val itemParser: ItemParser = new ItemParser()
+  private val itemParser: ItemParser[ParsedItem] = new ItemParser()
   private val jsonString: String = resourceAsString(Paths.get("belgium.json"))
   private val parsedItem: ParsedItem = itemParser.parseString(jsonString)
 

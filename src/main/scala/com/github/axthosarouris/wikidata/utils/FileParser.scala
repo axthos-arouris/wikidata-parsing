@@ -12,7 +12,7 @@ class FileParser(val inputFile: File) {
 
   val inputStream: Stream[String] = fileToStream(inputFile)
   val streamParser: StreamParser = new StreamParser(inputStream)
-  val itemParser: ItemParser = new ItemParser()
+  val itemParser: ItemParser[ParsedItem] = new ItemParser()
 
   def parseFile(): Stream[ParsedItem] = {
     streamParser.parseStream()
