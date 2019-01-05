@@ -1,6 +1,6 @@
 package com.github.axthosarouris.wikidata.utils
 
-import com.github.axthosarouris.wikidata.ItemParser
+import com.github.axthosarouris.wikidata.converters.ItemParser
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
 import org.json4s.DefaultFormats
 import org.slf4j.{Logger, LoggerFactory}

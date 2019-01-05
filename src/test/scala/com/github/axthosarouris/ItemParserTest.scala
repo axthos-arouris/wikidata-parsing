@@ -3,11 +3,11 @@ package com.github.axthosarouris
 import java.nio.file.Paths
 
 import com.github.axthosarouris.scala.commons.ResourceReader
-import com.github.axthosarouris.wikidata.ItemParser
 import com.github.axthosarouris.wikidata.constants.Languages
+import com.github.axthosarouris.wikidata.converters.ItemParser
 import com.github.axthosarouris.wikidata.parsedItems.claims.snaks._
 import com.github.axthosarouris.wikidata.parsedItems.claims.snaks.values.{EntityValue, ExternalIdValue, StringValue}
-import com.github.axthosarouris.wikidata.parsedItems.{Label, ParsedItem}
+import com.github.axthosarouris.wikidata.parsedItems.{ParsedItem, ParsedItemLabel}
 import org.scalatest.FlatSpec
 
 //@RunWith(classOf[JUnitRunner])
@@ -25,8 +25,8 @@ class ItemParserTest extends FlatSpec with ResourceReader {
   "ParsedItem" should "have  labels" in {
 
     val item: ParsedItem = parser.parseString(json)
-    assert(item.labels.isInstanceOf[Map[String, Label]])
-    val label: Option[Label] = item.labels.get(Languages.English)
+    assert(item.labels.isInstanceOf[Map[String, ParsedItemLabel]])
+    val label: Option[ParsedItemLabel] = item.labels.get(Languages.English)
     assert(label.isDefined)
     assert(label.get.language == Languages.English)
     assert(label.get.value === "hydrogen")

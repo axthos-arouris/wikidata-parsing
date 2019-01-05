@@ -1,4 +1,4 @@
-package com.github.axthosarouris.wikidata
+package com.github.axthosarouris.wikidata.converters
 
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
 import org.json4s.DefaultFormats
