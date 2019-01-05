@@ -3,7 +3,7 @@ package com.github.axthosarouris.wikidata.utils
 import java.io.{BufferedWriter, File, FileInputStream, FileOutputStream, OutputStreamWriter}
 import java.util.zip.{GZIPInputStream, GZIPOutputStream}
 
-import com.github.axthosarouris.wikidata.ItemParser
+import com.github.axthosarouris.wikidata.converters.ItemParser
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
 
 import scala.io.Source

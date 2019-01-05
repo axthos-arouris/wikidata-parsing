@@ -6,4 +6,3 @@ trait SnakValue {
   def `type`: String
 }
 
-
