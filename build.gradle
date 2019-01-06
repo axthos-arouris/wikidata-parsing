@@ -38,8 +38,8 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.github.hierynomus.scalariform"
 apply plugin: 'scalaStyle'
 
-def scalaVersion = "2.12"
-def scalaLibraryVersion = "2.12.8"
+def scalaVersion = "2.11"
+def scalaLibraryVersion = "2.11.12"
 
 
 
