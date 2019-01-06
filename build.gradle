@@ -47,7 +47,7 @@ def dateString = date.format("yyyy.MM.dd.HH.mm")
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
-version = "$dateString"
+version = "1.0.0"
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
@@ -130,10 +130,10 @@ bintray {
         vcsUrl = 'https://github.com/axthosarouris/wikidata-libraries'
 
         version {
-            name = "$dateString"
-            desc = 'Alpha testing'
+            name = "$version"
+            desc = 'Wikidata parsing'
             released = new Date()
-            vcsTag = "$dateString"
+            vcsTag = "$version"
 //            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
@@ -149,7 +149,7 @@ publishing {
             artifact javadocJar
             groupId 'com.github.axthosarouris'
             artifactId "wikidata-parsing_$scalaVersion"
-            version "${dateString}"
+            version "${version}"
         }
     }
 }
