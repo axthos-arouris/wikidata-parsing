@@ -38,14 +38,17 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.github.hierynomus.scalariform"
 apply plugin: 'scalaStyle'
 
-def scalaVersion = "2.11"
-def scalaLibraryVersion = "2.11.12"
 
 
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
 version = "1.0.0"
+
+def scalaVersion = "2.11"
+def scalaLibraryVersion = "2.11.12"
+def codeVersion= version
+
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
@@ -128,10 +131,10 @@ bintray {
         vcsUrl = 'https://github.com/axthosarouris/wikidata-libraries'
 
         version {
-            name = "$version"
+            name = "${codeVersion}"
             desc = 'Wikidata parsing'
             released = new Date()
-            vcsTag = "$version"
+            vcsTag = "$codeVersion"
 //            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
@@ -147,7 +150,7 @@ publishing {
             artifact javadocJar
             groupId 'com.github.axthosarouris'
             artifactId "wikidata-parsing_$scalaVersion"
-            version "${version}"
+            version "${codeVersion}"
         }
     }
 }
