@@ -1,3 +1,5 @@
 package com.github.axthosarouris.wikidata.parsedItems
 
-case class ParsedItemLabel(language: String, value: String)
+import com.github.axthosarouris.wikidata.Language
+
+case class ParsedItemLabel(language: Language, value: String)
