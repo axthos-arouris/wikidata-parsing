@@ -38,10 +38,8 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.github.hierynomus.scalariform"
 apply plugin: 'scalaStyle'
 
-def date = new Date()
-def scalaVersion = "2.11"
-def scalaLibraryVersion = "2.11.12"
-def dateString = date.format("yyyy.MM.dd.HH.mm")
+def scalaVersion = "2.12"
+def scalaLibraryVersion = "2.12.8"
 
 
 
