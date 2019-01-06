@@ -3,6 +3,7 @@ package com.github.axthosarouris.wikidata.converters
 import org.json4s.jackson.JsonMethods.parse
 import org.json4s.jackson.Serialization.write
 import org.json4s.{DefaultFormats, Formats, _}
+
 class ItemParser[T <: AnyRef] {
 
   implicit val formats: Formats = DefaultFormats
