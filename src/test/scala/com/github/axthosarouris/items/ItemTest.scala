@@ -6,7 +6,7 @@ import com.github.axthosarouris.scala.commons.ResourceReader
 import com.github.axthosarouris.wikidata.converters.ItemParser
 import com.github.axthosarouris.wikidata.items.Item
 import com.github.axthosarouris.wikidata.parsedItems.ParsedItem
-import com.github.axthosarouris.wikidata.supportedLanguages
+import com.github.axthosarouris.wikidata.{Language, supportedLanguages}
 import org.scalatest.FlatSpec
 
 class ItemTest extends FlatSpec with ResourceReader {
@@ -25,6 +25,13 @@ class ItemTest extends FlatSpec with ResourceReader {
     } {
       assert(expected.map(_.value) === item.labels.get(lang))
     }
+  }
+
+
+  "Item" should "not have labels for not supported languages" in {
+    val item: Item = Item.fromParsedItem(parsedItem)
+    val unsupportedLanguages: Set[Language] = item.labels.keys.toSet.diff(supportedLanguages)
+    assert(unsupportedLanguages === Set.empty)
   }
 
   "Item" should "be serialized and deserialized" in {

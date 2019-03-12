@@ -43,7 +43,7 @@ apply plugin: 'scalaStyle'
 
 group = "com.github.axthosarouris"
 archivesBaseName = "com.github.axthosarouris.wikidata-parser"
-version = "1.0.0"
+version = "1.0.1"
 
 def scalaVersion = "2.12"
 def scalaLibraryVersion = "2.12.8"
